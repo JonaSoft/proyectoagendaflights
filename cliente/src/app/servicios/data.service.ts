@@ -33,17 +33,39 @@ export class DataService {
     //this.selectedNote = new Note()
    
    }
+   //solicita todas las notas
+  mostrarAllNotes(){
+    return this.http.get(this.URL_API2+ `/allnotes`)
+  };
+   //guardar nota nueva
    saveFormNote(nota:Note){
      const{titlenote,descriptionnote} = nota;
      console.log('desde data service recibimos de addcomponent',nota)
      
      return this.http.post(this.URL_API2 +`/addnote`+`?title=${titlenote}?description=${descriptionnote}`,nota)
    }
+   //eliminar nota
    deleteFormNote(_id:string){
      console.log('desde dataService borrar',_id)
      return this.http.delete(this.URL_API2 + `/${_id}`)
 
    }
+   //editar nota
+   editFormNote(nota:Note){
+    return this.http.put(this.URL_API2 +`/edit/${nota._id}`,nota)
+    
+   }
+   mostrarFormNote(){
+    return this.http.get(this.URL_API2+ `/allnotes`)
+    /*.subscribe(res=>{
+      console.log(res)
+      return 
+    })*/
+    
+
+   }
+
+
   getFlights(flightini:any){
     return this.http.get(this.URL_API +`?${flightini}`)    
   }
@@ -59,10 +81,7 @@ export class DataService {
   deleteFlight(_id:String){
     return this.http.delete(this.URL_API + `/${_id}`)
   }
-  //solicita notas
-  mostrarAllNotes(){
-    return this.http.get(this.URL_API2+ `/allnotes`)
-  };
+  
 
   //solicita data desde el formulario
   mostrarDataForm(market:any,flightini:any,codope:any,flightope:any,origen:any,destino:any,fechainit:any){

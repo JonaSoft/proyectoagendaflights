@@ -4,7 +4,8 @@ import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Note } from '../../models/note';
 import { ExporterService } from '../../servicios/enviarhacia.service';
 import { AuthService } from '../../servicios/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-allnotes',
@@ -13,7 +14,8 @@ import { Router } from '@angular/router';
 })
 export class AllnotesComponent implements OnInit {
 allnotes=[]
-  constructor(private dataService:DataService) { }
+  constructor(private dataService:DataService,
+              private router:Router) { }
 
   ngOnInit() {
     this.allNotas()
@@ -35,18 +37,30 @@ allnotes=[]
     })
     
   }
-  eliminarNota(){
+  editarNota(idx:any){
+    console.log(idx)
+       this.router.navigate(['/home/editnote',idx])
+    //console.log(_id)
+    //this.router.navigateByUrl('/home/editnote?_id')
+    /*this.dataService.selectedNote=note;
+    this.dataService.editFormNote(note)
+    .subscribe(res=>{
+      console.log(res)
+    })*/
+  }
+  eliminarNota(id:string){
     
-    let idnota= document.getElementById("idnote").innerText
-    console.log(idnota)
+    //let idnota= document.getElementById("idnote").innerText
+    console.log(id)
     
-    this.dataService.deleteFormNote(idnota)
+    this.dataService.deleteFormNote(id)
     .subscribe(res=>{
       console.log(res);
       this.allNotas()
     })
     //this.allNotas()
   }
+ 
 
 
 

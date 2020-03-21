@@ -31,6 +31,7 @@ import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
 import { AllnotesComponent } from './components/allnotes/allnotes.component';
 import { AddnoteComponent } from './components/addnote/addnote.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { EditnoteComponent } from './components/editnote/editnote.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     NgDropFilesDirective,
     AllnotesComponent,
     AddnoteComponent,
-    CalendarComponent
+    CalendarComponent,
+    EditnoteComponent
   ],
   imports: [
     BrowserModule,

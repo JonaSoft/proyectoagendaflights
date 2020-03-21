@@ -89,6 +89,11 @@ app.post('/notes/addnote',async(req,res)=>{
     })
    
  })
+ //editar nota
+ app.put('/notes/edit/:id', async(req, res)=>{
+    console.log('id de la note por editar',req.params.id);
+
+ })
 
 //obtener paises
 app.get('/flights/paises', async(req, res) => {

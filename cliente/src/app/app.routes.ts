@@ -7,6 +7,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { AllnotesComponent } from './components/allnotes/allnotes.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { AddnoteComponent } from './components/addnote/addnote.component';
+import { EditnoteComponent } from './components/editnote/editnote.component';
 
 
 const APP_ROUTES: Routes = [
@@ -18,7 +19,8 @@ const APP_ROUTES: Routes = [
         children: [
             {path:'allnotes',component: AllnotesComponent},
             {path:'addnote',component: AddnoteComponent },
-            {path:'calendar',component: CalendarComponent}
+            {path:'calendar',component: CalendarComponent},
+            {path:'editnote/:id',component: EditnoteComponent}
         ],
         canActivate: [AuthGuard]
     },
